@@ -39,14 +39,15 @@ function setup(){
 
     bird = new Bird(100,100);
 
-    var options={
+    /*var options={
         bodyA: bird.body,
         bodyB: constrainedLog.body,
         stiffness: 0.08,
         length: 10
     }
     var chain= Constraint.create(options)
-    World.add(world, chain)
+    World.add(world, chain)*/
+    chain=new Chain(bird.body, constrainedLog.body)
 }
 
 function draw(){
@@ -73,5 +74,5 @@ function draw(){
     bird.display();
     platform.display();
     constrainedLog.display();
-    line(bird.body.position.x,bird.body.position.y, constrainedLog.body.position.x, constrainedLog.body.position.y )
+    chain.display();
 }
