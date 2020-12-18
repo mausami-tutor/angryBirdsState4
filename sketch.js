@@ -35,19 +35,11 @@ function setup(){
     box5 = new Box(810,160,70,70);
     log4 = new Log(760,120,150, PI/7);
     log5 = new Log(870,120,150, -PI/7);
-    constrainedLog=new Log(230,180,80,PI/2)
+    //constrainedLog=new Log(230,180,80,PI/2)
 
     bird = new Bird(100,100);
 
-    /*var options={
-        bodyA: bird.body,
-        bodyB: constrainedLog.body,
-        stiffness: 0.08,
-        length: 10
-    }
-    var chain= Constraint.create(options)
-    World.add(world, chain)*/
-    chain=new Chain(bird.body, constrainedLog.body)
+    slingShot =new SlingShot(bird.body, {x:200, y:100})
 }
 
 function draw(){
@@ -73,6 +65,10 @@ function draw(){
 
     bird.display();
     platform.display();
-    constrainedLog.display();
-    chain.display();
+   //constrainedLog.display();
+    slingShot.display();
+}
+
+function mouseDragged(){
+    Matter.Body.setPosition (bird.body, {x:mouseX, y:mouseY})
 }
